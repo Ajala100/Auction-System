@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Setter
@@ -32,7 +33,11 @@ public class AuctionItem {
     private String itemImageUrl;
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "seller_id", nullable = false)
     private AppUser seller;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Bid> bids;
 
     @CreationTimestamp
     private LocalDateTime timeListed;
