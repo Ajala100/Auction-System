@@ -23,9 +23,11 @@ public class Bid {
     private Double offer;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "bidder_id", nullable = false)
     private AppUser bidder;
 
     @OneToOne
+    @JoinColumn(name = "auction_item", nullable = false)
     private AuctionItem auctionItem;
 
     @CreationTimestamp
