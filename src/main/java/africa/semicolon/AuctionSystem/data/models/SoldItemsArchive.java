@@ -18,9 +18,11 @@ public class SoldItemsArchive {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST )
+    @JoinColumn(name = "auction_iten_id", nullable = false)
     private AuctionItem auctionItem;
 
     @OneToOne(fetch = FetchType.EAGER, cascade =CascadeType.PERSIST)
+    @JoinColumn(name = "bid_id", nullable = false)
     private Bid bid;
 
     @CreationTimestamp
